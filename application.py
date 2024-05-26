@@ -1,12 +1,24 @@
 from models.list_item import ListItem
+from models.package_kind import PackageKind
 
 class Application:
     
     def __init__(self) -> None:
-        pass
+        while True: 
+            self.display_main_menu()
+            opt = int(input(">> "))
+            if opt == 3:
+                break
 
-test = ListItem("Pomidor", 1, "asdasd")
-print(test)
+    def display_main_menu(self):
+        print("1. Wyświetl listy zakupów")
+        print("2. Dodaj nową listę")
+        print("3. Zapisz i zakończ")
+
+
+if __name__ == "__main__":
+    Application()
+
 # 1. Wyświetl listy zakupów
     # super_lista (12.01.2024)
     # lista_lidl (31.02.2024)

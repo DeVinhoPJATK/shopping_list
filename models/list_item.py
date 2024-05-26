@@ -1,4 +1,4 @@
-from package_kind import PackageKind
+from models.package_kind import PackageKind
 import datetime
 
 class ListItem:
