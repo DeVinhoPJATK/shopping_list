@@ -11,3 +11,10 @@ class ListItem:
 
     def __str__(self):
         return f"{self.name} ({self.amount}{self.package_kind})"
+    
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "amount": self.amount,
+            "package_kind": self.package_kind.value
+        }

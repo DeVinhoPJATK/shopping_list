@@ -1,5 +1,6 @@
 from models.list_item import ListItem
 from models.package_kind import PackageKind
+import json
 
 class Application:
     
@@ -15,6 +16,9 @@ class Application:
         print("2. Dodaj nową listę")
         print("3. Zapisz i zakończ")
 
+item = ListItem("Pomidor", 1.2, PackageKind.KG)
+item_json = json.dumps(item.to_dict())
+print(item_json)
 
 if __name__ == "__main__":
     Application()
