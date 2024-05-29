@@ -15,6 +15,15 @@ class ListItem:
     def to_dict(self):
         return {
             "name": self.name,
+            "created_at": self.created_at.isoformat(),
             "amount": self.amount,
             "package_kind": self.package_kind.value
         }
+    
+    @staticmethod
+    def from_dict(data):
+        return ListItem(
+            name=data["name"],
+            amount=data["amount"],
+            package_kind=PackageKind(data["package_kind"])
+        )

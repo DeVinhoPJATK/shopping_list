@@ -1,4 +1,9 @@
-[
-    {},
-    {}
-]
+{
+    "created_at": "2024-05-28T10:14:46.789123",
+    "name": "list_lidl",
+    "items": [
+        {"name": "Pomidor", "amount": 1.2, "package_kind": "kg"},
+        {"name": "Pomidor", "amount": 1.2, "package_kind": "kg"},
+        {"name": "Pomidor", "amount": 1.2, "package_kind": "kg"}
+    ]
+}

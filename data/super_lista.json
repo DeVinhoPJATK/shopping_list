@@ -1,0 +1,9 @@
+{
+    "created_at": "2024-05-28T12:34:56.789123",
+    "name": "super_lista",
+    "items": [
+        {"name": "Kawa", "amount": 1.2, "package_kind": "kg"},
+        {"name": "Banany", "amount": 1.2, "package_kind": "kg"},
+        {"name": "Ogórki", "amount": 1.2, "package_kind": "kg"}
+    ]
+}
