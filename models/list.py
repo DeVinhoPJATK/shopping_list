@@ -8,8 +8,8 @@ class List:
         self.created_at = datetime.datetime.now()
         self.items = []
 
-    def add_item(self, item: ListItem):
-        self.items.append(item)
+    def add_item(self, item: dict):
+        self.items.append(ListItem.from_dict(item))
 
     def remove_item(self, item: ListItem):
         try:
@@ -27,7 +27,7 @@ class List:
     def print_items(self):
         print()
         for idx, item in enumerate(self.items):
-            print(str(idx + 1) + ". " + str(item))
+            print("\t\t#" + str(idx + 1) + ". " + str(item))
         print()
     
     @staticmethod

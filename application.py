@@ -15,9 +15,9 @@ class Application:
                 self.list_handler.print_shopping_lists()
                 while True:
                     menu_printer.list_menu()
-                    list_menu_opt = read_input()
+                    list_menu_opt = read_input(indent=1)
                     if list_menu_opt == 1:
-                        list_id = read_input("Podaj ID listy: ")
+                        list_id = read_input("Podaj ID listy: ", 1)
                         self.list_handler.select_list_by_id(list_id)
                         self.list_products_opertation()
                     if list_menu_opt == 2:
@@ -32,22 +32,29 @@ class Application:
     def list_products_opertation(self):
         while True:
             menu_printer.list_products_menu()
-            list_products_opt = read_input()
+            list_products_opt = read_input(indent=2)
             if list_products_opt == 1:
                 self.list_handler.print_list_items()
             if list_products_opt == 2:
-                print("2")
+                item = {
+                    "name": read_input_str("Podaj nazwę produktu: ", 2),
+                    "package_kind": read_input_str("kilogramy czy opakowania (kg/op): ", 2),
+                    "amount": read_input_str("Podaj ilość: ", 2)
+                }
+                self.list_handler.add_item(item)
             if list_products_opt == 3:
                 print("3")
             if list_products_opt == 4:
-                print("4")
                 break
 
-def read_input(prefix = ">>"):
+def read_input(prefix = ">>", indent = 0):
     try:
-        return int(input(prefix))
+        return int(input(("\t" * indent) + prefix))
     except ValueError:
         print("\nWARTOŚĆ NIEPRAWIDŁOWA!\n")
+    
+def read_input_str(prefix, indent = 0):
+    return input(("\t" * indent) + prefix)
 
 
 if __name__ == "__main__":
