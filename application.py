@@ -10,20 +10,45 @@ class Application:
     def run(self):
         while True: 
             menu_printer.main_menu()
-            opt = int(input(">> "))
+            opt = read_input()
             if opt == 1:
                 self.list_handler.print_shopping_lists()
-                menu_printer.select_shopping_list()
                 while True:
-                    opt = int(input(">> "))
-                    if opt == 1:
-                        list_id = int(input("Podaj ID listy: "))
+                    menu_printer.list_menu()
+                    list_menu_opt = read_input()
+                    if list_menu_opt == 1:
+                        list_id = read_input("Podaj ID listy: ")
                         self.list_handler.select_list_by_id(list_id)
-                    if opt == 2:
+                        self.list_products_opertation()
+                    if list_menu_opt == 2:
                         print("PLACEHOLDER FOR DELETE LIST")
                         break
+                    if list_menu_opt == 3:
+                        break
+                    opt = None
             if opt == 3:
                 break
+    
+    def list_products_opertation(self):
+        while True:
+            menu_printer.list_products_menu()
+            list_products_opt = read_input()
+            if list_products_opt == 1:
+                self.list_handler.print_list_items()
+            if list_products_opt == 2:
+                print("2")
+            if list_products_opt == 3:
+                print("3")
+            if list_products_opt == 4:
+                print("4")
+                break
+
+def read_input(prefix = ">>"):
+    try:
+        return int(input(prefix))
+    except ValueError:
+        print("\nWARTOŚĆ NIEPRAWIDŁOWA!\n")
+
 
 if __name__ == "__main__":
     Application()

@@ -24,6 +24,12 @@ class List:
             "items": [item.to_dict() for item in self.items]
         }
     
+    def print_items(self):
+        print()
+        for idx, item in enumerate(self.items):
+            print(str(idx + 1) + ". " + str(item))
+        print()
+    
     @staticmethod
     def from_dict(data):
         list_obj = List(name=data["name"])

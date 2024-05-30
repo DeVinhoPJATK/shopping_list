@@ -20,4 +20,9 @@ class ListHandler:
             if shopping_list["id"] == id:
                 list_json = file_handler.load_file_as_json(shopping_list["list_name"])
                 self.selected_list = List.from_dict(list_json)
-                print(self.selected_list.to_dict())
+    
+    def print_list_items(self):
+        if self.selected_list is None:
+            print("\nNIE WYBRANO ŻADNEJ LISTY\n")
+            return
+        self.selected_list.print_items()
