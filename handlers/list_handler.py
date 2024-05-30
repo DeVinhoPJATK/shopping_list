@@ -1,7 +1,7 @@
 from models.list import List
 from models.package_kind import PackageKind
 import handlers.file_handler as file_handler
-from util.menu_printer import add_item_failure
+from util.menu_printer import add_item_failure, remove_item_failure
 
 class ListHandler:
 
@@ -48,3 +48,13 @@ class ListHandler:
                 print(f"\t\tDla wybranego rodzaju ({item['package_kind']}) ilość musi być wartością liczbową całkowitą.")
         self.selected_list.add_item(item)
         file_handler.save(self.selected_list)
+        print("\t\tProdukt dodany.")
+
+    def remove_item(self, item_id: int):
+        if item_id < 1 or item_id > len(self.selected_list.items):
+            remove_item_failure(self.selected_list.name)
+            print("\t\tNie można usunąć produktu, ID spoza zakresu.")
+            return
+        self.selected_list.remove_item(item_id - 1)
+        file_handler.save(self.selected_list)
+        print("\t\tProdukt usunięty.")

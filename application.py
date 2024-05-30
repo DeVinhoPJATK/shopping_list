@@ -43,7 +43,8 @@ class Application:
                 }
                 self.list_handler.add_item(item)
             if list_products_opt == 3:
-                print("3")
+                item_id = read_input("Podaj ID produktu: ", 2)
+                self.list_handler.remove_item(item_id)
             if list_products_opt == 4:
                 break
 

@@ -1,8 +1,11 @@
 #APPLICATION MENU
 def main_menu():
+    print("\n#################")
+    print("# LISTA ZAKUPÓW #")
+    print("#################")
     print("\n1. Wyświetl listy zakupów")
     print("2. Dodaj nową listę")
-    print("3. Zapisz i zakończ\n")
+    print("3. ZAKOŃCZ\n")
 
 def list_menu():
     print("\n\t1. Wybierz listę")
@@ -18,3 +21,7 @@ def list_products_menu():
 #ADD PRODUCT ERROR MESSAGES
 def add_item_failure(list_name: str):
     print("\n\t\tBłąd! Produkt nie został dodany do listy " + list_name)
+
+#REMOVE PRODUCT ERROR MESSAGES
+def remove_item_failure(list_name: str):
+    print("\n\t\tBłąd! Produkt nie został usunięty z listy " + list_name)

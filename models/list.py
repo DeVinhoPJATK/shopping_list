@@ -11,9 +11,9 @@ class List:
     def add_item(self, item: dict):
         self.items.append(ListItem.from_dict(item))
 
-    def remove_item(self, item: ListItem):
+    def remove_item(self, item_index: int):
         try:
-            self.items.remove(item)
+            self.items.pop(item_index)
         except ValueError:
             print("Taki element nie istnieje")
 
