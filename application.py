@@ -19,17 +19,23 @@ class Application:
                     if list_menu_opt == 1:
                         list_id = read_input("Podaj ID listy: ", 1)
                         self.list_handler.select_list_by_id(list_id)
-                        self.list_products_opertation()
+                        self.list_products_opertations()
                     if list_menu_opt == 2:
-                        print("PLACEHOLDER FOR DELETE LIST")
-                        break
+                        print("\tUWAGA! Lista zostanie bezpowrotnie usunięta, czy chcesz kontynuować? (tak/nie)")
+                        response = read_input_str(">>", 1)
+                        if (response == "tak"):
+                            list_id = read_input("Podaj ID listy: ", 1)
+                            self.list_handler.remove_list(list_id)
+                            break
+                        elif (response == "nie"):
+                            continue
                     if list_menu_opt == 3:
                         break
                     opt = None
             if opt == 3:
                 break
     
-    def list_products_opertation(self):
+    def list_products_opertations(self):
         while True:
             menu_printer.list_products_menu()
             list_products_opt = read_input(indent=2)

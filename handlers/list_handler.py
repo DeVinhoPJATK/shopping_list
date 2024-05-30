@@ -1,7 +1,7 @@
 from models.list import List
 from models.package_kind import PackageKind
 import handlers.file_handler as file_handler
-from util.menu_printer import add_item_failure, remove_item_failure
+from util.menu_printer import add_item_failure, remove_item_failure, remove_list_failure
 
 class ListHandler:
 
@@ -58,3 +58,17 @@ class ListHandler:
         self.selected_list.remove_item(item_id - 1)
         file_handler.save(self.selected_list)
         print("\t\tProdukt usunięty.")
+    
+    def remove_list(self, list_id: int):
+        if list_id < 1 or list_id > len(self.loaded_lists):
+            remove_list_failure()
+            print("\tNie można usunąć listy, ID spoza zakresu.")
+            return
+        list_name = self.loaded_lists[list_id - 1]["list_name"]
+        is_removed = file_handler.remove_file(list_name)
+        if is_removed:
+            print(f"\tList {list_name} została usunięta")
+            self.loaded_lists.pop(list_id - 1)
+            self.selected_list = None
+        else:
+            print(f"Wystąpił nieznany błąd, lista nie została usnięta")

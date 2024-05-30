@@ -4,27 +4,27 @@
     "items": [
         {
             "name": "Pomidor",
-            "created_at": "2024-05-31T00:07:45.326154",
+            "created_at": "2024-05-31T00:48:28.214426",
             "amount": 1.2,
             "package_kind": "kg"
         },
         {
-            "name": "Mleko",
-            "created_at": "2024-05-31T00:07:45.326154",
-            "amount": 2,
-            "package_kind": "op"
-        },
-        {
             "name": "sdfsdf",
-            "created_at": "2024-05-31T00:07:59.916642",
+            "created_at": "2024-05-31T00:48:28.214426",
             "amount": 1,
             "package_kind": "op"
         },
         {
             "name": "fsdfds",
-            "created_at": "2024-05-31T00:08:05.787847",
+            "created_at": "2024-05-31T00:48:28.214426",
             "amount": 7.6,
             "package_kind": "kg"
+        },
+        {
+            "name": "kawa",
+            "created_at": "2024-05-31T00:48:44.273580",
+            "amount": 2,
+            "package_kind": "op"
         }
     ]
 }

@@ -13,7 +13,7 @@ def load_lists():
     return file_names
 
 def load_file_as_json(file_name: str):
-    file_path = os.path.join(STORAGE_DIRECTORY, file_name + ".json",)
+    file_path = os.path.join(STORAGE_DIRECTORY, file_name + ".json")
     if not os.path.isfile(file_path):
         raise FileNotFoundError(f"Plik {file_name} nie istnieje")
     with open(file_path, 'r') as file:
@@ -21,7 +21,17 @@ def load_file_as_json(file_name: str):
     
 def save(list: List):
     list_dict = list.to_dict()
-    file_path = os.path.join(STORAGE_DIRECTORY, list.name + ".json",)
+    file_path = os.path.join(STORAGE_DIRECTORY, list.name + ".json")
     json_data = json.dumps(list_dict, indent=4)
     with open(file_path, 'w') as json_file:
         json_file.write(json_data)
+
+def remove_file(file_name: str):
+    file_path = build_file_path(file_name)
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        return True
+    return False
+
+def build_file_path(file_name: str):
+    return os.path.join(STORAGE_DIRECTORY, file_name + ".json",)
