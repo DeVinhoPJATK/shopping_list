@@ -12,6 +12,12 @@ def load_lists():
             file_names.append(file_name_without_extension)
     return file_names
 
+def create_list(list: List):
+    list_dict = list.to_dict()
+    file_path = build_file_path(list.name)
+    with open(file_path, 'w') as file:
+        json.dump(list_dict, file, indent=4)
+
 def load_file_as_json(file_name: str):
     file_path = os.path.join(STORAGE_DIRECTORY, file_name + ".json")
     if not os.path.isfile(file_path):
@@ -28,10 +34,13 @@ def save(list: List):
 
 def remove_file(file_name: str):
     file_path = build_file_path(file_name)
-    if os.path.exists(file_path):
+    if exists(file_name):
         os.remove(file_path)
         return True
     return False
 
 def build_file_path(file_name: str):
     return os.path.join(STORAGE_DIRECTORY, file_name + ".json",)
+
+def exists(file_name: str):
+    return os.path.exists(build_file_path(file_name))

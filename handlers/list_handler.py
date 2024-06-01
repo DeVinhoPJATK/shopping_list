@@ -1,7 +1,7 @@
 from models.list import List
 from models.package_kind import PackageKind
 import handlers.file_handler as file_handler
-from util.menu_printer import add_item_failure, remove_item_failure, remove_list_failure
+from util.menu_printer import add_item_failure, remove_item_failure, remove_list_failure, create_list_failure, select_list_failure
 
 class ListHandler:
 
@@ -21,6 +21,10 @@ class ListHandler:
             if shopping_list["id"] == id:
                 list_json = file_handler.load_file_as_json(shopping_list["list_name"])
                 self.selected_list = List.from_dict(list_json)
+                return True
+        select_list_failure()
+        print("\tNie istnieje lista o podanym numerze.")
+        return False
     
     def print_list_items(self):
         if self.selected_list is None:
@@ -53,7 +57,7 @@ class ListHandler:
     def remove_item(self, item_id: int):
         if item_id < 1 or item_id > len(self.selected_list.items):
             remove_item_failure(self.selected_list.name)
-            print("\t\tNie można usunąć produktu, ID spoza zakresu.")
+            print("\t\tNie można usunąć produktu, brak produktu o podanym numerze.")
             return
         self.selected_list.remove_item(item_id - 1)
         file_handler.save(self.selected_list)
@@ -62,7 +66,7 @@ class ListHandler:
     def remove_list(self, list_id: int):
         if list_id < 1 or list_id > len(self.loaded_lists):
             remove_list_failure()
-            print("\tNie można usunąć listy, ID spoza zakresu.")
+            print("\tNie istnieje lista o podanym numerze.")
             return
         list_name = self.loaded_lists[list_id - 1]["list_name"]
         is_removed = file_handler.remove_file(list_name)
@@ -72,3 +76,16 @@ class ListHandler:
             self.selected_list = None
         else:
             print(f"Wystąpił nieznany błąd, lista nie została usnięta")
+
+    def create_list(self, list_name: str):
+        if list_name == "":
+            create_list_failure()
+            print(f"Nazwa listy nie może być pusta")
+            return
+        list = List(list_name)
+        if file_handler.exists(list.name):
+            create_list_failure()
+            print(f"Lista '{list_name}' już istnieje")
+            return
+        file_handler.create_list(list)
+        print(f"Lista {list_name} została utworzona")

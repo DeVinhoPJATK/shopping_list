@@ -17,14 +17,14 @@ class Application:
                     menu_printer.list_menu()
                     list_menu_opt = read_input(indent=1)
                     if list_menu_opt == 1:
-                        list_id = read_input("Podaj ID listy: ", 1)
-                        self.list_handler.select_list_by_id(list_id)
-                        self.list_products_opertations()
+                        list_id = read_input("Podaj numer listy: ", 1)
+                        is_selected = self.list_handler.select_list_by_id(list_id)
+                        if is_selected: self.list_products_opertations()
                     if list_menu_opt == 2:
                         print("\tUWAGA! Lista zostanie bezpowrotnie usunięta, czy chcesz kontynuować? (tak/nie)")
                         response = read_input_str(">>", 1)
                         if (response == "tak"):
-                            list_id = read_input("Podaj ID listy: ", 1)
+                            list_id = read_input("Podaj numer listy: ", 1)
                             self.list_handler.remove_list(list_id)
                             break
                         elif (response == "nie"):
@@ -32,6 +32,9 @@ class Application:
                     if list_menu_opt == 3:
                         break
                     opt = None
+            if opt == 2:
+                list_name = read_input_str("Podaj nazwę: ")
+                self.list_handler.create_list(list_name)
             if opt == 3:
                 break
     
@@ -49,7 +52,7 @@ class Application:
                 }
                 self.list_handler.add_item(item)
             if list_products_opt == 3:
-                item_id = read_input("Podaj ID produktu: ", 2)
+                item_id = read_input("Podaj numer produktu: ", 2)
                 self.list_handler.remove_item(item_id)
             if list_products_opt == 4:
                 break

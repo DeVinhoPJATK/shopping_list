@@ -20,12 +20,18 @@ def list_products_menu():
 
 #ADD PRODUCT ERROR MESSAGES
 def add_item_failure(list_name: str):
-    print("\n\t\tBłąd! Produkt nie został dodany do listy " + list_name)
+    print(f"\n\t\tBłąd! Produkt nie został dodany do listy '{list_name}'")
 
 #REMOVE PRODUCT ERROR MESSAGES
 def remove_item_failure(list_name: str):
-    print("\n\t\tBłąd! Produkt nie został usunięty z listy " + list_name)
+    print(f"\n\t\tBłąd! Produkt nie został usunięty z listy '{list_name}'")
 
 #LIST ERROR MESSAGES
+def select_list_failure():
+    print("\n\tBłąd! Żadna lista nie została wybrana")
+
+def create_list_failure():
+    print("\nBłąd! Lista nie została utworzona")
+
 def remove_list_failure():
-    print("\n\tBłąd! Lista nie zostanie usunięta")
+    print("\n\tBłąd! Lista nie została usunięta")

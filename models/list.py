@@ -4,7 +4,7 @@ import datetime
 class List:
 
     def __init__(self, name: str) -> None:
-        self.name = name
+        self.name = name.replace(" ", "_")
         self.created_at = datetime.datetime.now()
         self.items = []
 
