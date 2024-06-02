@@ -4,6 +4,10 @@ import json
 
 STORAGE_DIRECTORY = 'data'
 
+def init_data():
+    if not os.path.exists(STORAGE_DIRECTORY):
+        os.makedirs(STORAGE_DIRECTORY)
+
 def load_lists():
     file_names = []
     for file_name in os.listdir(STORAGE_DIRECTORY):

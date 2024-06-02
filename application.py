@@ -1,10 +1,12 @@
 import util.menu_printer as menu_printer
 from  handlers.list_handler import ListHandler
+from handlers.file_handler import init_data
 
 class Application:
     
     def __init__(self) -> None:
         self.list_handler = ListHandler()
+        init_data()
         self.run()
 
     def run(self):
