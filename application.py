@@ -12,32 +12,35 @@ class Application:
             menu_printer.main_menu()
             opt = read_input()
             if opt == 1:
-                self.list_handler.print_shopping_lists()
-                while True:
-                    menu_printer.list_menu()
-                    list_menu_opt = read_input(indent=1)
-                    if list_menu_opt == 1:
-                        list_id = read_input("Podaj numer listy: ", 1)
-                        is_selected = self.list_handler.select_list_by_id(list_id)
-                        if is_selected: self.list_products_opertations()
-                    if list_menu_opt == 2:
-                        print("\tUWAGA! Lista zostanie bezpowrotnie usunięta, czy chcesz kontynuować? (tak/nie)")
-                        response = read_input_str(">>", 1)
-                        if (response == "tak"):
-                            list_id = read_input("Podaj numer listy: ", 1)
-                            self.list_handler.remove_list(list_id)
-                            break
-                        elif (response == "nie"):
-                            continue
-                    if list_menu_opt == 3:
-                        break
-                    opt = None
+                self.show_list_operations()
             if opt == 2:
                 list_name = read_input_str("Podaj nazwę: ")
                 self.list_handler.create_list(list_name)
             if opt == 3:
                 break
     
+    def show_list_operations(self):
+        while True:
+            self.list_handler.print_shopping_lists()
+            menu_printer.list_menu()
+            list_menu_opt = read_input(indent=1)
+            if list_menu_opt == 1:
+                list_id = read_input("Podaj numer listy: ", 1)
+                is_selected = self.list_handler.select_list_by_id(list_id)
+                if is_selected: self.list_products_opertations()
+            if list_menu_opt == 2:
+                print("\tUWAGA! Lista zostanie bezpowrotnie usunięta, czy chcesz kontynuować? (tak/nie)")
+                response = read_input_str(">>", 1)
+                if (response == "tak"):
+                    list_id = read_input("Podaj numer listy: ", 1)
+                    self.list_handler.remove_list(list_id)
+                    break
+                elif (response == "nie"):
+                    continue
+            if list_menu_opt == 3:
+                break
+            opt = None
+
     def list_products_opertations(self):
         while True:
             menu_printer.list_products_menu()
