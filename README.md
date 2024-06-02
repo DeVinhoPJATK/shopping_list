@@ -1,3 +1,4 @@
+# Dawid Łacheta s24177
 # Aplikacja Listy Zakupów
 
 Aplikacja Listy Zakupów to narzędzie wiersza poleceń zaprojektowane, aby pomóc użytkownikom zarządzać ich listami zakupów. Aplikacja pozwala na tworzenie i usuwanie list zakupów, wyświetlanie wszystkich list, wyświetlanie produktów z konkretnej listy oraz dodawanie i usuwanie produktów z listy. Dane dotyczące list oraz produktów są serializowane do formatu JSON oraz zapisywane w plikach .json w katologu **data/**. 
